@@ -23,19 +23,19 @@ import com.loganantham.student.model.Student;
 public class StudentBean implements Serializable{
  
 	//resource injection
-	@Resource(name="jdbc/studentsportal")
+	//@Resource(name="jdbc/studentsportal")
 	private DataSource ds;
 	
 	//if resource inject is not support, you still can get it manually.
-	/*public CustomerBean(){
+	public StudentBean(){
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mkyongdb");
+			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/studentsportal");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 		
-	}*/
+	}
 	
 	//connect to DB and get customer list
 	public List<Student> getStudentList() throws SQLException{
@@ -59,15 +59,15 @@ public class StudentBean implements Serializable{
 		List<Student> list = new ArrayList<Student>();
 		
 		while(result.next()){
-			Student cust = new Student();
+			Student student = new Student();
 			
-			cust.setRollNo(result.getLong("roll_no"));
-			cust.setName(result.getString("name"));
-			cust.setAddress(result.getString("address"));
-			cust.setCreated_date(result.getDate("created_date"));
+			student.setRollNo(result.getLong("roll_no"));
+			student.setName(result.getString("name"));
+			student.setAddress(result.getString("address"));
+			student.setCreated_date(result.getDate("created_date"));
 			
 			//store all data into a List
-			list.add(cust);
+			list.add(student);
 		}
 			
 		return list;

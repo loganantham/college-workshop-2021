@@ -23,3 +23,5 @@ insert into studentsportal.student(roll_no, name, address, created_date)
 values(4, 'Loga4', 'address4', now());
 insert into studentsportal.student(roll_no, name, address, created_date) 
 values(5, 'Loga5', 'address5', now());
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
